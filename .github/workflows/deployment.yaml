@@ -17,4 +17,4 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y openssh-client
-          scp -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} -r . ubuntu@34.201.92.1:/home/ubuntu
+          scp -i ${{ secrets.SSH_PRIVATE_KEY }} -o StrictHostKeyChecking=no -r . ubuntu@34.201.92.1:/home/ubuntu

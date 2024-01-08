@@ -3,7 +3,7 @@ name: Copy App to EC2
 on:
   push:
     branches:
-      - master  # Replace with your branch name
+      - main  # Replace with your branch name
 
 jobs:
   copy-to-ec2:
@@ -17,6 +17,4 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y openssh-client
-          scp -r -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ./ ubuntu@34.201.92.1 :/home/ubuntu
-          
-
+          scp -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} -r . ubuntu@34.201.92.1:/home/ubuntu
